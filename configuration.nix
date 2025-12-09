@@ -28,6 +28,13 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Enable printing
+  services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
@@ -74,6 +81,14 @@
     xwayland.enable = true;
   };
 
+  # TeamViewer
+  services.teamviewer.enable = true;
+
+  # VirtualBox
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "marcin" ];
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marcin = {
     isNormalUser = true;
@@ -97,6 +112,7 @@
     waybar
     kitty
     wofi
+    simple-scan
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];
