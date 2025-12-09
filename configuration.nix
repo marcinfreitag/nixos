@@ -55,6 +55,11 @@
   # Configure console keymap
   console.keyMap = "pl2";
 
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marcin = {
     isNormalUser = true;
@@ -68,7 +73,13 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  programs.firefox.enable = true;
   environment.systemPackages = with pkgs; [
+    neovim
+    htop
+    fastfetch
+    waybar
+    kitty
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];
