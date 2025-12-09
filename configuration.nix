@@ -148,3 +148,5 @@
   system.stateVersion = "25.11"; # Did you read the comment?
 
 }
+
+# vim: set tabstop=2 shiftwidth=2 expandtab :
