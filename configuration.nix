@@ -110,6 +110,8 @@
     htop
     fastfetch
     waybar
+    font-awesome
+    font-awesome_6
     kitty
     wofi
     simple-scan
