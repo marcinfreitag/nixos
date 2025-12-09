@@ -46,6 +46,18 @@
     LC_TIME = "en_GB.UTF-8";
   };
 
+  # Sound system
+  # rtkit is optional but recommended
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+  };
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "pl";
@@ -54,6 +66,8 @@
 
   # Configure console keymap
   console.keyMap = "pl2";
+
+  services.displayManager.gdm.enable = true;
 
   programs.hyprland = {
     enable = true;
@@ -75,6 +89,7 @@
   # $ nix search wget
   programs.firefox.enable = true;
   environment.systemPackages = with pkgs; [
+    brightnessctl
     git
     neovim
     htop
