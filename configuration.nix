@@ -18,7 +18,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.initrd.luks.devices."luks-02b827bc-f014-4c86-8cd1-6d709d6c0439".device = "/dev/disk/by-uuid/02b827bc-f014-4c86-8cd1-6d709d6c0439";
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "portable"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
