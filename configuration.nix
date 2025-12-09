@@ -75,11 +75,13 @@
   # $ nix search wget
   programs.firefox.enable = true;
   environment.systemPackages = with pkgs; [
+    git
     neovim
     htop
     fastfetch
     waybar
     kitty
+    wofi
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];
@@ -103,6 +105,7 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
