@@ -10,7 +10,6 @@
     noto-fonts
     noto-fonts-color-emoji
   ];
-  programs.git.enable = true;
   programs.yazi.enable = true;
   programs.mpv.enable = true;
   programs.bash = {

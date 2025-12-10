@@ -89,6 +89,12 @@
   users.extraGroups.vboxusers.members = [ "marcin" ];
   virtualisation.virtualbox.host.enableExtensionPack = true;
 
+  # gnupg
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marcin = {
     isNormalUser = true;
@@ -111,10 +117,10 @@
     fastfetch
     waybar
     font-awesome
-    font-awesome_6
     kitty
     wofi
     simple-scan
+    nautilus
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];
