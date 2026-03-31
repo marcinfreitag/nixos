@@ -1,4 +1,4 @@
-{{- fulllUserName := promptStringOnce . "fulllUserName" "Full user name" -}}
+{{- $fulllUserName := promptStringOnce . "fulllUserName" "Full user name" -}}
 {{- $linuxUserName:= promptStringOnce . "linuxUserName" "Linux user name" -}}
 {{- $userEmail := promptStringOnce . "userEmail" "User's email address" -}}
 {{- $workstationHostname:= promptStringOnce . "workstationHostname" "Workstation hostname" -}}
