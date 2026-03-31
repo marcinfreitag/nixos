@@ -76,7 +76,14 @@
 
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
+  #services.desktopManager.gnome.enable = true;
+  
+  # Enable hyprland
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true; # recommended for most users
+    xwayland.enable = true; # Xwayland can be disabled.
+  };
 
   # Configure keymap in X11
   #services.xserver.xkb = {
@@ -131,9 +138,20 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    brightnessctl
+    git
     neovim
-    chezmoi
+    htop
     fastfetch
+    waybar
+    font-awesome
+    kitty
+    wofi
+    simple-scan
+    nautilus
+    chezmoi
+    yazi
+    mpv
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
