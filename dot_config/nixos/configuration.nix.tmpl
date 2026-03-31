@@ -147,11 +147,7 @@
     neovim
     htop
     yazi
-    
-    # fonts
-    inter-nerdfont
-    font-awesome
-    
+    yt-dlp
     
     waybar
     kitty
@@ -161,6 +157,12 @@
     
   ];
 
+  # Install fonts
+  fonts.packages = with pkgs; [
+    inter-nerdfont
+    font-awesome
+  ];
+    
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
