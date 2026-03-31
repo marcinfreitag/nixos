@@ -10,14 +10,43 @@
       ./hardware-configuration.nix
     ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
 
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+    plymouth = {
+      enable = true;
+      theme = "bgrt";
+    };
+    
+    # Bootloader.
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+      useOSProber = true;
+    };
 
-  boot.initrd.luks.devices."luks-{{ .rootLuksVolume }}".device = "/dev/disk/by-uuid/{{ .rootLuksVolume }}";
+    # Enable "Silent boot"
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+    
+    # Use latest kernel
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = [
+      "quiet"
+      "udev.log_level=3"
+      "systemd.show_status=auto"
+      "i915.enable_psr=0" # For Thinpad X280
+    ];
+    # Hide the OS choice for bootloaders.
+    # It's still possible to open the bootloader list by pressing any key
+    # It will just not appear on screen unless a key is pressed
+    loader.timeout = 0;
+    
+    initrd = {
+      systemd.enable = true; # For password prompt in plymouth
+      luks.devices."luks-{{ .rootLuksVolume }}".device = "/dev/disk/by-uuid/{{ .rootLuksVolume }}";
+    };
+  };
+  
   networking.hostName = {{ .workstationHostname  | quote }}; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -45,9 +74,6 @@
     LC_TELEPHONE = "en_GB.UTF-8";
     LC_TIME = "en_GB.UTF-8";
   };
-
-  # Enable the X11 windowing system.
-  #services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
