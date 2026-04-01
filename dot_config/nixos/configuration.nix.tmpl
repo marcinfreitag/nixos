@@ -112,6 +112,9 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
   
+  # Enable bluetooth
+  hardware.bluetooth.enable = true;
+  
   # Enable TeamViewer with service
   services.teamviewer.enable = true;
 
@@ -139,6 +142,7 @@
   environment.systemPackages = with pkgs; [
     # cli tools
     age
+    bluetuith
     brightnessctl
     chezmoi
     clamav
