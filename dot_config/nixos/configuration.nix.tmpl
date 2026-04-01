@@ -93,6 +93,13 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Enable Avahi for network printer discovery
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true; # Allows resolving .local hostnames
+    openFirewall = true; # Opens ports for printer discovery
+  };
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -175,6 +182,7 @@
     gcr
     gnome-text-editor
     simple-scan
+    system-config-printer
     nautilus
     
     # LibreOffice
@@ -186,6 +194,8 @@
     hyphenDicts.en_GB
     hyphenDicts.de_DE
     hyphenDicts.pl_PL
+    
+    lutris
     
     # hyprland utils
     hyprpaper
