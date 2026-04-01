@@ -1,11 +1,11 @@
-{{- $fulllUserName := promptStringOnce . "fulllUserName" "Full user name" -}}
+{{- $fullUserName := promptStringOnce . "fullUserName" "Full user name" -}}
 {{- $linuxUserName:= promptStringOnce . "linuxUserName" "Linux user name" -}}
 {{- $userEmail := promptStringOnce . "userEmail" "User's email address" -}}
 {{- $workstationHostname:= promptStringOnce . "workstationHostname" "Workstation hostname" -}}
 {{- $rootLuksVolume:= promptStringOnce . "rootLuksVolume" "UUID of the luks-volume with //" -}}
 
 [data]
-  fulllUserName = {{ $fulllUserName | quote }}
+  fullUserName = {{ $fullUserName | quote }}
   linuxUserName = {{ $linuxUserName | quote }}
   userEmail = {{ $userEmail | quote }}
   workstationHostname = {{ $workstationHostname | quote }}
