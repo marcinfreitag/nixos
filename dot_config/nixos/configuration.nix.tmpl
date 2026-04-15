@@ -42,9 +42,14 @@
     
     initrd = {
       systemd.enable = true; # For password prompt in plymouth
-      luks.devices."luks-{{ .rootLuksVolume }}".device = "/dev/disk/by-uuid/{{ .rootLuksVolume }}";
     };
   };
+
+  # Swap
+  swapDevices = [{
+    device = "/var/lib/swapfile";
+    size = 8*1024;
+  }];
   
   networking = {
     hostName = {{ .workstationHostname  | quote }}; # Define your hostname.
