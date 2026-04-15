@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# Trigger script when configuration.nix.tmpl or flake.nix.tmpl changed
+# dot_config/nixos/configuration.nix.tmpl hash: {{ include "dot_config/nixos/configuration.nix.tmpl" | sha256sum }}
+# dot_config/nixos/flake.nix.tmpl hash: {{ include "dot_config/nixos/flake.nix.tmpl" | sha256sum }}
+
+initialWallpaper=$HOME/Pictures/wallpapers/nix-wallpaper-nineish-catppuccin-macchiato.png
+currentWallpaper=$HOME/Pictures/wallpapers/.current
+
+if [ ! -f "$currentWallpaper" ]; then
+  ln -s $initialWallpaper $currentWallpaper
+  hyprctl reload
+fi
