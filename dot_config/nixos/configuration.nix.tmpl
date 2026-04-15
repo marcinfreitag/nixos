@@ -173,7 +173,6 @@
     libnotify
     lynis
     mpv
-    neovim
     pass
     passExtensions.pass-otp
     syncthing
@@ -234,6 +233,10 @@
       enable = true;
       enableSSHSupport = true;
     };
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      };
     hyprland = {
       enable = true;
       withUWSM = true; # recommended for most users

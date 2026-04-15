@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Trigger script when configuration.nix.tmpl or flake.nix.tmpl changed
+# dot_config/nixos/configuration.nix.tmpl hash: {{ include "dot_config/nixos/configuration.nix.tmpl" | sha256sum }}
+# dot_config/nixos/flake.nix.tmpl hash: {{ include "dot_config/nixos/flake.nix.tmpl" | sha256sum }}
+pushd $HOME/.config/hypr/modules
+ln -s monitors-fallback.conf monitors.conf
+hyprctl reload
+popd
