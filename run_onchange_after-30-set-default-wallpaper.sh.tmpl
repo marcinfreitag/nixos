@@ -9,5 +9,7 @@ currentWallpaper=$HOME/Pictures/wallpapers/.current
 
 if [ ! -f "$currentWallpaper" ]; then
   ln -s $initialWallpaper $currentWallpaper
-  hyprctl reload
+  if [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
+      hyprctl hyprpaper wallpaper ", $currentWallpaper"
+  fi
 fi
