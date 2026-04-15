@@ -3,7 +3,8 @@
 # Trigger script when configuration.nix.tmpl or flake.nix.tmpl changed
 # dot_config/nixos/configuration.nix.tmpl hash: {{ include "dot_config/nixos/configuration.nix.tmpl" | sha256sum }}
 # dot_config/nixos/flake.nix.tmpl hash: {{ include "dot_config/nixos/flake.nix.tmpl" | sha256sum }}
-pushd $HOME/.config/hypr/modules
-ln -s monitors-fallback.conf monitors.conf
-hyprctl reload
-popd
+
+if [ ! -f $HOME/.config/hypr/modules/monitors.conf ]; then
+  ln -s $HOME/.config/hypr/modules/monitors-fallback.conf $HOME/.config/hypr/modules/monitors.conf
+  hyprctl reload
+fi
