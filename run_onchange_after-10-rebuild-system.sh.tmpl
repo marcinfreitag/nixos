@@ -3,6 +3,7 @@
 # Trigger script when configuration.nix.tmpl or flake.nix.tmpl changed
 # dot_config/nixos/configuration.nix.tmpl hash: {{ include "dot_config/nixos/configuration.nix.tmpl" | sha256sum }}
 # dot_config/nixos/flake.nix.tmpl hash: {{ include "dot_config/nixos/flake.nix.tmpl" | sha256sum }}
+# dot_config/nixos/home.nix.tmpl hash: {{ include "dot_config/nixos/home.nix.tmpl" | sha256sum }}
 pushd $HOME/.config/nixos
 cp -f /etc/nixos/hardware-configuration.nix .
 sudo nixos-rebuild switch --flake

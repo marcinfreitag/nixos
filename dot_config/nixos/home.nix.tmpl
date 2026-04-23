@@ -1,0 +1,29 @@
+{ config, pkgs,  ...}:
+
+{
+  home = {
+    username = "{{ .linuxUserName }}";
+    homeDirectory = "/home/{{ .linuxUserName }}";
+#    packages = with pkgs; [
+#      brave
+#    ];
+  };
+
+  programs = {
+    home-manager.enable = true;
+    bash = {
+      enable = true;
+      shellAliases = {
+        ff = "fastfetch";
+        ga = "git add";
+        gc = "git commit -m";
+        gp = "git push";
+        gpl = "git pull";
+        gs = "git status";
+      };
+    };
+  };
+  nixpkgs.config.allowUnfree = true;
+  home.stateVersion = "25.11";
+}
+# vim: set tabstop=2 shiftwidth=2 expandtab :

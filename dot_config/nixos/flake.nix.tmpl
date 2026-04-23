@@ -13,7 +13,7 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, mangowm, ...}: {
+  outputs = inputs@{ self, nixpkgs, home-manager, mangowm, ...}: {
     nixosConfigurations = {
       {{ .workstationHostname }} = nixpkgs.lib.nixosSystem {
          modules = [
@@ -24,6 +24,7 @@
            home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
+            users.{{ .linuxUserName }} = import ./home.nix;
             };
          }
         ];
