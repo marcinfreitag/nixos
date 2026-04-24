@@ -13,7 +13,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, mangowm, ...}: {
+  outputs = inputs@{ self, nixpkgs, home-manager, mangowm,  ...}: {
     nixosConfigurations = {
       {{ .workstationHostname }} = nixpkgs.lib.nixosSystem {
          modules = [
